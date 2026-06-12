@@ -1,0 +1,41 @@
+# CakePHP 3
+
+/config/app.php
+/titip
+titip/*
+/tmp/cache/models/*
+!/tmp/cache/models/empty
+/tmp/cache/persistent/*
+!/tmp/cache/persistent/empty
+/tmp/cache/views/*
+!/tmp/cache/views/empty
+/tmp/sessions/*
+!/tmp/sessions/empty
+/tmp/tests/*
+!/tmp/tests/empty
+
+/logs/*
+!/logs/empty
+user/uploads/*
+user/assets/uploads/images/*
+user/assets/*
+user/assets/uploads/images/users/*
+# CakePHP 2
+
+/app/tmp/*
+/app/Config/core.php
+/app/Config/database.php
+
+vendor/*
+user/assets/uploads/*
+user/uploads/*
+application/config/database.php
+application/admin/config/database.php
+application/user/config/database.php
+/vendors/*
+
+# vscode
+/.vscode
+.idea
+dumb_db.sql
+backup/Tesis.zip

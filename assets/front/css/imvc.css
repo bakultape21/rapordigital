@@ -1,0 +1,477 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.section-header{
+    margin-top: 150px;
+    padding-left:100px;
+    font-family: 'Raleway', sans-serif;
+}
+.section-header h1{
+    font-size: 78px;
+    line-height:75px;
+    font-weight:500;
+    margin-bottom: 25px;
+    
+}
+.section-header p {
+    font-family:'Fredoka', sans-serif;
+    font-size: 24x;
+}
+.section-subheader{
+    padding-left:125px;
+    font-size: 36px;
+    color: #FEA39E;
+    line-height: 42px;
+}
+.section-box1{
+    position: relative;
+}
+.section-box1 .img-bg{
+    width: 50%;
+    height: 600px;
+}
+.section-content{
+    position: absolute;
+    padding-left: 50px;
+    top: 15%;
+}
+.section-content .img-quote{
+    width: 35px;
+    height: 30px;
+    opacity: 25%;
+}
+.section-box1 .section-evaluasi {
+    position: absolute;
+    padding-left: 84px;
+    font-weight:100;
+    bottom: -4%;
+}
+.evaluasi-description{
+    font-size: 21px;
+    line-height: 25px;
+    letter-spacing: 2px;
+}
+.section-box2{
+    padding: 100px 100px 0px 100px;
+}
+.section-box3{
+    position: relative;
+}
+.section-box3 .img-bg2{
+    width: 45%;
+    float: right;
+    height: 780px;
+}
+.section-content2{
+    right: 5%;
+    margin-top: 135px;
+    position: absolute;
+    text-align:right; 
+    line-height: 30px;
+    font-size: 24px;
+}
+.section-content2 .img-quote2{
+    margin:10px 15px;
+    width: 35px;
+    height: 30px;
+    opacity: 25%;
+}
+.section-box4{
+    clear:right;
+    padding:0 100px 0 100px;
+}
+.section-box4 .title{
+    font-family: 'Imprima', sans-serif;
+    color: #FEA39E;
+    font-size: 56px;
+    line-height: 60px;
+}
+.section-box5{
+    padding: 5% 100px;
+}
+.section-box5 .sub-title{
+    color: #FEA39E;
+    font-size:48px;
+    font-family:'Fredoka', sans-serif;
+}
+.section-box6{
+    margin-top: 25%;
+    position: relative;
+}
+.section-box6 .img-bg3{
+    width: 100%;
+}
+.section-content-info{
+    position: absolute;
+    padding: 100px 100px 0px 25px;
+    top: -35%;
+}
+.section-content-info .garis2{
+    height: 1px;
+    width: 75px;
+}
+.section-content-info .sub-title{
+    color: #FEA39E;
+    font-size:36px;
+    font-family:'Fredoka', sans-serif;
+}
+.section-content-info .img-button{
+    width: 35%;
+}
+.section-content-info .description{
+    padding-left: 100px;
+    margin-top:50px;
+}
+.carousel-inner{
+    height: 575px;
+    float: center;
+}
+
+.carousel-inner img{
+    width: 325px;
+}
+.carousel-inner-foto{
+    height: 250px;
+}
+.carousel-inner-foto img{
+    padding-left: 100px;
+    width: 90%;
+    height: 300px;
+}
+.carousel-inner-video{
+    height: 250px;
+}
+.carousel-inner-video video{
+    margin-left: 80px;
+    /* width: 90%; */
+    /* height: 300px; */
+}
+.carousel-caption{
+    color: #444444;
+    font-size: 18px;
+    top: 50%;
+}
+.carousel-foto{
+    justify-content: center;
+    top: 50%;
+}
+.section-box7 h4{
+    font-family:'Fredoka', sans-serif;
+    font-size: 36px;
+    color: #FEA39E;
+    margin-bottom: 50px;
+}
+.section-akhir{
+    position: relative;
+}
+.section-akhir .img-bg-akhir1{
+    width: 100%;  
+    /* height:575px;  */
+    /* height:675px; */
+    position:absolute;
+}
+.section-akhir .img-bg-akhir2{
+    width: 40%; 
+    /* height: 575px;  */
+    /* height:675px; */
+    position:absolute; 
+    left:60%;
+}
+.section-akhir .section-akhir-content{
+    position: absolute;
+    margin: 50px 100px;
+}
+.section-akhir-content .img-banner{
+    width: 500px; 
+}
+.section-akhir-content p {
+    margin: 200px 0 0 300px !important;
+    font-size: 12px;
+}
+.section-akhir .section-akhir-content .button-daftar{
+    margin: 235px 0 0 390px !important;
+} 
+
+@media only screen and (max-width: 768px){
+    .pattern-navbar{
+        width: 15% !important;
+        height: 50px !important;
+    }
+    .menu-konsulasi{
+        background-color: #FEA39E;
+        position:relative;
+        z-index: 100;
+    }
+    .section-header{
+        padding: 0px;
+        margin-top: 400px;
+    }
+    .section-subheader{
+        margin: 0px;
+    }
+    .section-box1 .img-bg{
+        width: 90%;
+        height: 600px;
+    }
+    .section-content{
+        padding-left: 10px;
+    }
+    .section-content .img-quote{
+        width: 25px;
+        height: 20px;
+    }
+    .section-box1 .section-evaluasi {
+        padding-left: 50px;
+        top: 55%;
+    }  
+    .evaluasi-description{
+        margin: 0;
+        padding: 0;
+    }
+    .section-box2 .section-video{
+        width: 500px;
+    }
+    .section-content2{
+        font-size: 16px;
+    }
+    .section-content2 h6{
+        font-size: 12px;
+    }
+    .section-box4{
+        padding:0 50px 0 50px;
+    }
+    .section-box4 .title{
+        font-size: 42px;
+        line-height: 60px;
+    }
+    .section-box4 .sub-title{
+        font-size: 18px;
+        line-height: 30px;
+    }
+    .section-box5 .sub-title{
+        color: #FEA39E;
+        font-size:48px;
+        font-family:'Fredoka', sans-serif;
+    }
+    .section-box6{
+        margin-top: 300px;
+    }
+    .section-box6 .img-bg3{
+        height: 600px;
+    }
+    .section-content-info{
+        position: absolute;
+        padding: 25px;
+        top: -25%;
+    }
+    .section-content-info .garis2{
+        margin-left: 5px;
+        height: 1px;
+        width: 100px;
+    }
+    .section-content-info p{
+        font-size: 14px;
+    }
+    .section-content-info .sub-title{
+        font-size:28px;
+    }
+    .section-content-info .img-button{
+        width: 25%;
+    }
+    .section-content-info .description{
+        padding-left: 10px;
+        margin-top:0px;
+    }
+    .carousel-inner{
+        height: 575px;
+        float: center;
+    }
+    .carousel-inner img{
+        width: 250px;
+        height: 425px !important;
+    }
+    .carousel-inner-foto{
+        height: 200px;
+    }
+    .carousel-inner-foto img{
+        padding-left: 100px;
+        width: 90%;
+        height: 300px;
+    }
+    .carousel-inner-video{
+        height: 200px;
+    }
+    .section-box7{
+        margin-top: 250px;
+    }
+    .section-akhir-content p {
+        margin: 50px 0 0 10px !important;
+        font-size: 12px;
+    }
+    .section-akhir .section-akhir-content .button-daftar{
+        margin-top: 10% !important;
+        margin-left: -5% !important;
+        /* top: 30%; */
+    } 
+
+    .section-footer{
+        margin-top: 800px !important;
+    }
+}
+@media only screen and (min-width: 320px)and (max-width: 601px){
+    .menu-konsulasi{
+        background-color: #FEA39E;
+    }
+    .logo-konsulasi{
+        width: 200px;
+        height: 30px;
+    }
+    .section-header h1{
+        font-size: 42px;
+        line-height: 40px;
+    }
+    .section-header p{
+        font-size: 14px;
+    }
+    .section-box1 > .img-bg{
+        width:90%;
+
+    }
+    .section-subheader{
+        padding: 0px;
+        font-size: 21px;
+    }
+    .section-content .img-quote{
+        width: 50px;
+        height: 20px;
+    }
+    .section-content p {
+        font-size: 12px;
+    }
+    .section-content h6 {
+        font-size: 10px;
+    }
+    .section-box1 .section-evaluasi {
+        padding-left: 10px;
+        top: 45%;
+        margin: 0px;
+    }  
+    .evaluasi-description p{
+        font-size: 12px;
+        padding-left: 10px;
+        line-height: 25px;
+    }    
+    .section-box2{
+        padding: 100px 0px;
+    }
+    .garis-box2{
+        padding-left: 10px;
+    }
+    .section-box2 p{
+        font-size: 12px;
+    }
+    .section-box2 .section-video{
+        width: 300px;
+    }
+    .section-box3 > .img-bg2{
+        width:90%;
+    }
+    .section-content2{
+        right: 5%;
+        font-size: 12px;
+    }
+    .section-content2 h6{
+        font-size: 10px;
+    }
+    .section-content2 .img-quote2{
+        margin:0px;
+        width: 12px;
+        height: 10px;
+    }
+    .section-box4{
+        padding:0 10px 0 10px;
+    }
+    .section-box4 .title{
+        font-size: 32px;
+        line-height: 40px;
+    }
+    .section-box4 .sub-title{
+        font-size: 14px;
+    }
+    .section-box5{
+        padding: 10px;
+    }
+    .section-box5 .sub-title{
+        font-size:21px;
+    }
+    .carousel-caption{
+        font-size: 12px !important;
+    }
+    .section-box6{
+        margin-top: 400px;
+    }
+    .section-box6 .img-bg3{
+        height: 800px;
+    }
+    .carousel{
+        width: 275px;
+    }
+    .carousel-inner{
+        height: 400px;
+        float: center;
+    }
+    .carousel-inner img{
+        width: 175px;
+        height: 325px !important;
+    }
+    .carousel-inner-foto img{
+        padding-left: 35px;
+        width: 90%;
+        height: 175px;
+    }
+    .carousel-inner-video video{
+        margin: 0px;
+        padding-left: 0px;
+        width: 90%;
+        height: 175px;
+    }
+    .section-content-info .img-button{
+        width: 45%;
+    }
+    .section-content-info p{
+        font-size: 12px;
+    }
+    .section-box7{
+        margin-top: 100px;
+    }
+    .section-akhir{
+        padding: 0;
+        margin: 0;
+    }
+    .section-akhir .img-bg-akhir1, .section-akhir .img-bg-akhir2{
+        height: 450px !important;
+    }
+    .section-akhir .section-akhir-content{
+        margin: 0px;
+    }
+    .section-akhir-content .img-banner{
+        width: 275px !important; 
+        height: 400px !important;
+        margin-top: 25px;
+    }
+    .section-akhir-content p {
+        margin: 50px 0px 0px !important;
+        font-size: 12px;
+    }
+    .section-akhir .section-akhir-content .button-daftar{
+        margin: 35px 20px 30px 20px !important; 
+    } 
+    .section-footer{
+        margin-top: 600px !important;
+    }
+    .section-footer h6, .section-footer p{
+        font-size: 12px;
+    }
+}

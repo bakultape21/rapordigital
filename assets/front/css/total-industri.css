@@ -1,0 +1,227 @@
+
+    /* background */
+    .bg-blue {
+        background-color: #044B95
+    }
+
+    .bg-orange{
+        background: #F29D0D !important;
+    }
+
+    /* Images */
+    .indo-flag {
+    background-image: url("../../images/indonesiaflag.svg");
+    background-repeat: no-repeat;
+    height: 2vw;
+    width: 2vw;
+    background-position-y: center;
+    padding-left: 20px !important;
+    }
+    .england-flag {
+    background-image: url("../../images/england-flag.png");
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 24px;
+    background-position-y: center;
+    padding-left: 20px !important;
+    }
+
+    /* table */
+    .table-borderless>tbody>tr>td,
+    .table-borderless>tbody>tr>th,
+    .table-borderless>tfoot>tr>td,
+    .table-borderless>tfoot>tr>th,
+    .table-borderless>thead>tr>td,
+    .table-borderless>thead>tr>th {
+        border: none;
+    }
+
+    /* search Box */
+    input[type="search"] {
+        border: none;
+        background: transparent;
+        margin: 0;
+        padding: 7px 8px;
+        font-size: 14px;
+        color: inherit;
+        border: 1px solid transparent;
+        border-radius: inherit;
+        width: 400px;
+    }
+
+    input[type="search"]::placeholder {
+        color: #bbb;
+    }
+
+    .search-button {
+        text-indent: -999px;
+        overflow: hidden;
+        width: 40px;
+        padding: 0;
+        margin: 0;
+        border: 1px solid transparent;
+        border-radius: inherit;
+        background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+        cursor: pointer;
+        opacity: 0.7;
+    }
+
+    button[type="submit"]:hover {
+        opacity: 1;
+    }
+
+    button[type="submit"]:focus,
+    input[type="search"]:focus {
+        box-shadow: 0 0 3px 0 #2757BD;
+        border-color: #2757BD;
+        outline: none;
+    }
+
+    /* dropdown menu */
+    .mega-menu {
+        padding: 10px 0px ! important;
+        width: 540px;
+        border-radius: 0;
+        margin-top: 0px;
+    }
+    
+    .mega-menu li {
+        display: inline-block;
+        float: left;
+        font-size: 0.94rem;
+        padding: 3px 0px;
+    }
+    .mega-menu li.mega-menu-column {
+        margin-right: 20px;
+        width: 150px;
+    }
+    
+    .mega-menu .nav-header {
+        padding: 0 !important;
+        margin-bottom: 10px;
+        display: inline-block;
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+    }
+    .mega-menu img { padding-bottom: 10px;}
+    /*  */
+
+    /* produk */
+    .card-callapse{
+    margin-bottom: 0.5rem;
+
+    }
+    .card-header-callapse {
+        background-color: rgb(255 255 255);
+        border: 0.1px solid;
+        border-radius: 5px;
+    }
+    .product-discount{
+        position: absolute;
+        border-radius: 0px 8px 8px 0px;
+        margin-top: 5%;
+        padding: 5px;
+        background: #EE2B2E;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    #product {
+        display: grid;
+        grid-template-columns: 
+            repeat(auto-fit,minmax(12rem,1fr))
+        ;
+        grid-gap: 0.6rem;
+    }
+    .column:hover{
+        box-shadow: 0px 5px 10px 5px rgba(0,0,0,0.1);
+    }
+
+    /* form */
+    .radio-item {
+        display: inline-block;
+        position: relative;
+        padding: 0 6px;
+        margin: 10px 0 0;
+    }
+    
+    .radio-item input[type='radio'] {
+        display: none;
+    }
+    
+    .radio-item label {
+        color: #666;
+        font-weight: normal;
+    }
+    
+    .radio-item label:before {
+        content: " ";
+        display: inline-block;
+        position: relative;
+        top: 5px;
+        margin: 0 5px 0 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 11px;
+        border: 2px solid #004c97;
+        background-color: transparent;
+    }
+    
+    .radio-item input[type=radio]:checked + label:after {
+        border-radius: 11px;
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        top: 9px;
+        left: 10px;
+        content: " ";
+        display: block;
+        background: #004c97;
+    }
+
+    
+
+    .mobileHide { 
+        display: inline;
+    }
+    
+    /* Smartphone Portrait and Landscape */
+    @media only screen and (min-device-width : 0px) and (max-device-width : 480px){  
+
+        .mobileHide { 
+            display: none;
+        }
+
+        input[type="search"] {
+            width: 300px;
+        }
+
+        .btnwa{
+            margin: 5px;
+            padding: 3px 10px !important;
+        }
+        .nav-img{
+            width: 30px;
+            height: 30px;
+            padding: 5px;
+        }
+
+        .img-carousel{
+            width: 375px !important;
+        }
+
+        .img-icon{
+            width: 50% !important;
+        }
+
+        
+    }
+    @media (min-width: 768px){
+        .navbar-expand-md .navbar-nav .nav-link {
+            padding-right: 0.1rem;
+            padding-left: 0.1rem;
+    }
+}
+
+    
+
+    
