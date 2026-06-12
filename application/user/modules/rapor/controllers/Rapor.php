@@ -401,46 +401,46 @@ class Rapor extends MX_Controller
 
 		
 	}
-	public function putar_gambar($url='')
+	public function putar_gambar()
 	{
-		// if ($_POST) {
+		$url = $this->input->post('url');
+		$base64_data = $this->input->post('base64_data');
 
-			// $url= '/assets/uploads/images/users/174997341292c8c96e4c37100777c7190b76d28233_pp.png';
+		$result = [
+			'status' => 0,
+			'message' => 'Gagal memproses gambar.'
+		];
 
-			// echo $_POST['url'];
-
-			// exit();
-			$url= $_POST['url'];
-			$filename= APPPATH. './../../user/'.$url;
-
-			if (file_exists($filename)) {
-			    $mime = mime_content_type($filename);
-			    
-			    if ($mime === 'image/png') {
-			        
-					$source = imagecreatefrompng($filename);
-
-					$rotate = imagerotate($source, 90, 0);
-					imagepng($rotate,  APPPATH. './../../user/'.$url);
-					$result['status']     = 1;
-					$result['message']    = 'Berhasil ';
-
-			    } elseif ($mime === 'image/jpeg') {
-
-					$source = imagecreatefromjpeg($filename);
-
-					$rotate = imagerotate($source, 90, 0);
-					imagejpeg($rotate,  APPPATH. './../../user/'.$url);
-					$result['status']     = 1;
-					$result['message']    = 'Berhasil ';
-
-			    }
-			}
-
+		if (empty($url) || empty($base64_data)) {
+			$result['message'] = 'Data gambar tidak valid.';
+			header('Content-Type: application/json');
 			echo json_encode($result);
-		// }
-		
+			return;
+		}
 
+		if (strpos($url, '..') !== false) {
+			$result['message'] = 'Path gambar tidak diizinkan.';
+			header('Content-Type: application/json');
+			echo json_encode($result);
+			return;
+		}
+
+		$filename = APPPATH . './../../user/' . ltrim($url, '/');
+
+		$parts = explode(',', $base64_data);
+		if (count($parts) === 2) {
+			$image_binary = base64_decode($parts[1]);
+			
+			if (file_put_contents($filename, $image_binary)) {
+				$result['status'] = 1;
+				$result['message'] = 'Berhasil menyimpan rotasi.';
+			} else {
+				$result['message'] = 'Gagal menyimpan file di server.';
+			}
+		}
+
+		header('Content-Type: application/json');
+		echo json_encode($result);
 	}
 	public function cetak_rapor_harian_foto($id='', $watermark='', $html='')
 	{
