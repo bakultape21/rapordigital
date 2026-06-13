@@ -47,6 +47,13 @@ class Pdfb extends FPDF {
 
     function Header()
     {
+        // --- DRAW PREMIUM PAGE BORDER ---
+        $this->SetDrawColor(41, 128, 185); // Blue modern border color
+        $this->SetLineWidth(1.0); // 1mm thickness
+        $this->Rect(5, 5, 200, 287, 'D'); // A4 size is 210x297, margin 5mm all around
+        $this->SetLineWidth(0.2); // Reset line width to default
+        $this->SetDrawColor(0, 0, 0); // Reset drawing color
+        
         //Put the watermark
         // echo $this->img_head;
         // exit();
@@ -58,9 +65,6 @@ class Pdfb extends FPDF {
         }
         
         $this->SetAlpha(1);
-        // $this->SetFont('Arial','B',50);
-        // $this->SetTextColor(255,192,203);
-        // $this->RotatedText(35,190,'W a t e r m a r k   d e m o',45);
     }
     function AddExtGState($parms)
     {

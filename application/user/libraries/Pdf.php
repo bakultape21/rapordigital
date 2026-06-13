@@ -7,6 +7,15 @@ class Pdf extends FPDF {
 
 	  protected $imageKey = '';
 
+  public function Header() {
+      // --- DRAW PREMIUM PAGE BORDER ---
+      $this->SetDrawColor(41, 128, 185); // Blue modern border color
+      $this->SetLineWidth(1.0); // 1mm thickness
+      $this->Rect(5, 5, 200, 287, 'D'); // A4 size is 210x297, margin 5mm all around
+      $this->SetLineWidth(0.2); // Reset line width to default
+      $this->SetDrawColor(0, 0, 0); // Reset drawing color
+  }
+
   public function setImageKey($key){
     $this->imageKey = $key;
   }
