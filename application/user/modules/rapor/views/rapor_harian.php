@@ -545,7 +545,7 @@ function preview_image(id)
 			$('#edit_data').modal('show');
 			document.getElementById("edit_ppp").onclick =  function() {get_edit_ppp(id, nama_siswa)};
 			document.getElementById("bt_edit_foto_rapor").onclick =  function() {get_edit_foto_rapor(id, nama_siswa)};
-			setCetakLink("bt_edit_narasi", "<?= site_url() ?>/rapor/rapor_narasi/edit_narasi/" + id);
+			document.getElementById("bt_edit_narasi").href = "<?= site_url() ?>/rapor/rapor_narasi/edit_narasi/" + id;
 
 			// setCetakLink("cetak_data_lembaga", "<?= site_url() ?>/rapor/cetak_lembaga/"+ id);
 			

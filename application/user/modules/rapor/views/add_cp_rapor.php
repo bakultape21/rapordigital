@@ -552,9 +552,9 @@ function preview_image(id)
 			document.getElementById("edit_ppp").onclick =  function() {get_edit_ppp(id, nama_siswa)};
 			document.getElementById("bt_edit_foto_rapor").onclick =  function() {get_edit_foto_rapor(id, nama_siswa)};
 
-			setCetakLink("show_add_cp", "<?= site_url() ?>/rapor/form_add_rapor_cp/"+ id );
+			document.getElementById("show_add_cp").href = "<?= site_url() ?>/rapor/form_add_rapor_cp/"+ id ;
 
-			setCetakLink("show_edit_cp", "<?= site_url() ?>/rapor/form_add_rapor_cp/"+ id );
+			document.getElementById("show_edit_cp").href = "<?= site_url() ?>/rapor/form_add_rapor_cp/"+ id ;
 			// setCetakLink("cetak_data_lembaga", "<?= site_url() ?>/rapor/cetak_lembaga/"+ id);
 			
 			
