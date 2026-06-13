@@ -39,8 +39,6 @@ $agama=[
                 $font = (!empty($theme_font)) ? $theme_font : 'Arial';
                 
                 $pdf->AddPage();
-                //
-                $pdf->AddPage();
 
                 $pdf->Ln(5);
 
