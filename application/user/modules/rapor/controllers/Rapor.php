@@ -724,7 +724,9 @@ group by cp_id, kegiatan_nilai
 	{
 		$backup_foto= $_POST['backup_foto_pancasila'];
 		$photo= $backup_foto;
-		if ($_FILES) {
+		$upload_error = '';
+
+		if (isset($_FILES['foto_ppp']) && $_FILES['foto_ppp']['error'] != 4) {
 				$upload_path = 'assets/uploads/images/users';
 
 				$config['upload_path'] 		= $upload_path;
@@ -747,6 +749,7 @@ group by cp_id, kegiatan_nilai
 					$photo = $upload_path . '/' . $fix_name_file;
 					
 				}else{
+					$upload_error = strip_tags($this->upload->display_errors());
 					$photo =  $backup_foto;
 				}
 			}
@@ -762,21 +765,18 @@ group by cp_id, kegiatan_nilai
         		],
         		'where'=> ['siswa_kelas_id'=> $_POST['siswa_kelas_id']]]);
 			
-		if ($cek) {
+		if ($cek && empty($upload_error)) {
 			$result['status']     = 1;
-			$result['message']    = 'Upadate ';
-
-			echo json_encode($result);	
-
-		}else{
+			$result['message']    = 'Berhasil menyimpan data.';
+		} else if ($cek && !empty($upload_error)) {
 			$result['status']     = 0;
-			$result['message']    = 'Upadate ';
-
-			echo json_encode($result);	
+			$result['message']    = 'Gagal upload foto: ' . $upload_error;
+		} else {
+			$result['status']     = 0;
+			$result['message']    = 'Gagal menyimpan ke database.';
 		}
 
-		
-
+		echo json_encode($result);	
 	}
 	public function action_upload_foto($id='')
 	{
@@ -805,10 +805,12 @@ group by cp_id, kegiatan_nilai
 			'order'=> ['e.elemen_nomor', 'asc'],
 			'where'=> ['sekolah_elemen_status'=> 1, 'sekolah_id'=> $data['data_siswa']->sekolah_id]]);
 
+		$upload_errors = [];
+
 		foreach ($elemen_sekolah as $key => $value) {
 			$backup_foto = $_POST['b'.$value->elemen_data_id];
 
-			if ($_FILES) {
+			if (isset($_FILES[$value->elemen_data_id]) && $_FILES[$value->elemen_data_id]['error'] != 4) {
 				$upload_path = 'assets/uploads/images/users';
 
 				$config['upload_path'] 		= $upload_path;
@@ -831,36 +833,43 @@ group by cp_id, kegiatan_nilai
 					$photo = $upload_path . '/' . $fix_name_file;
 					
 				}else{
+					$upload_errors[] = strip_tags($this->upload->display_errors());
 					$photo =  $backup_foto;
 				}
 
-				$this->m_global->delete([
-					'table'=> 't_kelas_belajar_rapor_foto', 
-					'where'=> [
-						'siswa_kelas_id'=> $data['data_siswa']->siswa_kelas_id, 
-						'elemen_data_id'=> $value->elemen_data_id]
-					]);
-
-				$data_array=[
-					'foto'=> $photo,
-					'elemen_data_id'=> $value->elemen_data_id,
-					'siswa_kelas_id'=> $data['data_siswa']->siswa_kelas_id
-				];
-
-				$insert = [
-					'table' => 't_kelas_belajar_rapor_foto',
-					'datas'	=> $data_array];
-
-				$result = $this->m_global->insert($insert);
-				
-				
+			} else {
+				$photo = $backup_foto;
 			}
+
+			$this->m_global->delete([
+				'table'=> 't_kelas_belajar_rapor_foto', 
+				'where'=> [
+					'siswa_kelas_id'=> $data['data_siswa']->siswa_kelas_id, 
+					'elemen_data_id'=> $value->elemen_data_id]
+				]);
+
+			$data_array=[
+				'foto'=> $photo,
+				'elemen_data_id'=> $value->elemen_data_id,
+				'siswa_kelas_id'=> $data['data_siswa']->siswa_kelas_id
+			];
+
+			$insert = [
+				'table' => 't_kelas_belajar_rapor_foto',
+				'datas'	=> $data_array];
+
+			$result_insert = $this->m_global->insert($insert);
 		}
-		$result['status']     = 1;
-		$result['message']    = 'Berhasil Menambahkan Nilai Rapor ';
+
+		if (count($upload_errors) > 0) {
+			$result['status']     = 0;
+			$result['message']    = 'Beberapa foto gagal diunggah: ' . implode(', ', $upload_errors);
+		} else {
+			$result['status']     = 1;
+			$result['message']    = 'Berhasil menyimpan foto rapor.';
+		}
 
 		echo json_encode($result);	
-
 
 	}
 		public function cetak_lembaga($id, $html=null)
