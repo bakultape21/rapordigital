@@ -6,10 +6,19 @@ class Pdf extends FPDF {
 	private $aligns;
 
 	  protected $imageKey = '';
+      protected $border_r = 41;
+      protected $border_g = 128;
+      protected $border_b = 185;
+
+  public function setBorderColor($r, $g, $b) {
+      $this->border_r = $r;
+      $this->border_g = $g;
+      $this->border_b = $b;
+  }
 
   public function Header() {
       // --- DRAW PREMIUM PAGE BORDER ---
-      $this->SetDrawColor(41, 128, 185); // Blue modern border color
+      $this->SetDrawColor($this->border_r, $this->border_g, $this->border_b); // Dynamic border color
       $this->SetLineWidth(1.0); // 1mm thickness
       $this->Rect(5, 5, 200, 287, 'D'); // A4 size is 210x297, margin 5mm all around
       $this->SetLineWidth(0.2); // Reset line width to default

@@ -445,6 +445,8 @@ class Rapor extends MX_Controller
 	public function cetak_rapor_harian_foto($id='', $watermark='', $html='')
 	{
 		$data['watermark']= $watermark;
+		$data['theme_color'] = $this->input->get('color');
+		$data['theme_font'] = $this->input->get('font');
 
 		$data['data_siswa']= $this->m_global->get([
         		'table'=> 't_kelas_belajar_data td', 
@@ -503,6 +505,8 @@ group by cp_id, kegiatan_nilai
 	public function cetak_rapor_harian($id='', $watermark='', $html='')
 	{
 		$data['watermark']= $watermark;
+		$data['theme_color'] = $this->input->get('color');
+		$data['theme_font'] = $this->input->get('font');
 		$data['data_siswa']= $this->m_global->get([
         		'table'=> 't_kelas_belajar_data td', 
         		'select'=> '*, s.alamat as alamat_sekolah',
@@ -557,6 +561,8 @@ group by cp_id, kegiatan_nilai
 	public function cetak_rapor_html( $type='',$id='', $watermark= '')
 	{
 		$data['watermark']= $watermark;
+		$data['theme_color'] = $this->input->get('color');
+		$data['theme_font'] = $this->input->get('font');
 		$data['data_siswa']= $this->m_global->get([
         		'table'=> 't_kelas_belajar_data td', 
         		'select'=> '*, s.alamat as alamat_sekolah',
@@ -641,6 +647,8 @@ group by cp_id, kegiatan_nilai
 	public function cetak_rapor( $type='',$id='', $watermark= '')
 	{
 		$data['watermark']= $watermark;
+		$data['theme_color'] = $this->input->get('color');
+		$data['theme_font'] = $this->input->get('font');
 		$data['data_siswa']= $this->m_global->get([
         		'table'=> 't_kelas_belajar_data td', 
         		'select'=> '*, s.alamat as alamat_sekolah',

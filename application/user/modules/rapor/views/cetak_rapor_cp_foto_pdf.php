@@ -18,20 +18,41 @@ $agama=[
                  if ($watermark==1) {
                     $pdf->setImgHead($data_siswa->logo);
                 }
+                
+                // --- SETUP DYNAMIC THEME ---
+                if (!empty($theme_color)) {
+                    if ($theme_color == 'merah') {
+                        $pdf->setBorderColor(231, 76, 60);
+                        $bg_r = 231; $bg_g = 76; $bg_b = 60;
+                    } elseif ($theme_color == 'kuning') {
+                        $pdf->setBorderColor(241, 196, 15);
+                        $bg_r = 241; $bg_g = 196; $bg_b = 15;
+                    } else {
+                        $pdf->setBorderColor(41, 128, 185);
+                        $bg_r = 41; $bg_g = 128; $bg_b = 185;
+                    }
+                } else {
+                    $pdf->setBorderColor(41, 128, 185);
+                    $bg_r = 41; $bg_g = 128; $bg_b = 185;
+                }
+                
+                $font = (!empty($theme_font)) ? $theme_font : 'Arial';
+                
                 $pdf->AddPage();
-                // $pdf->AddPage();
+                //
+                $pdf->AddPage();
 
                 $pdf->Ln(5);
 
                 // --- PREMIUM HEADER DESIGN ---
-                $pdf->SetFillColor(41, 128, 185); // Blue modern background
+                $pdf->SetFillColor($bg_r, $bg_g, $bg_b); // Blue modern background
                 $pdf->SetTextColor(255, 255, 255); // White text
-                $pdf->SetDrawColor(41, 128, 185);
+                $pdf->SetDrawColor($bg_r, $bg_g, $bg_b);
                 
-                $pdf->SetFont('Arial', 'B', 16);
+                $pdf->SetFont($font, 'B', 16);
                 $pdf->Cell(190, 10, ' LAPORAN CAPAIAN PERKEMBANGAN ANAK', 0, 1, 'C', true);
                 
-                $pdf->SetFont('Arial', 'B', 12);
+                $pdf->SetFont($font, 'B', 12);
                 $pdf->Cell(190, 8, ' TAHUN PELAJARAN ' . strtoupper($data_siswa->tahun), 0, 1, 'C', true);
                 $pdf->Ln(6);
 
@@ -43,25 +64,25 @@ $agama=[
                 // Atur posisi X agar rata dengan header
                 $pdf->SetX($pdf->GetX());
                 
-                $pdf->SetFont('Arial', 'B', 11);
+                $pdf->SetFont($font, 'B', 11);
                 $pdf->Cell(45, 8, '   Nama Lengkap', 'LT', 0, 'L', true);
-                $pdf->SetFont('Arial', '', 11);
+                $pdf->SetFont($font, '', 11);
                 $pdf->Cell(145, 8, ': ' . $data_siswa->nama_lengkap, 'TR', 1, 'L', true);
                 
-                $pdf->SetFont('Arial', 'B', 11);
+                $pdf->SetFont($font, 'B', 11);
                 $pdf->Cell(45, 8, '   No Induk', 'L', 0, 'L', true);
-                $pdf->SetFont('Arial', '', 11);
+                $pdf->SetFont($font, '', 11);
                 $pdf->Cell(145, 8, ': ' . $data_siswa->no_induk, 'R', 1, 'L', true);
                 
-                $pdf->SetFont('Arial', 'B', 11);
+                $pdf->SetFont($font, 'B', 11);
                 $pdf->Cell(45, 8, '   Kelompok Kelas', 'L', 0, 'L', true);
-                $pdf->SetFont('Arial', '', 11);
+                $pdf->SetFont($font, '', 11);
                 $pdf->Cell(145, 8, ': ' . strtoupper($data_siswa->nama_kelas), 'R', 1, 'L', true);
                 
                 $semester = ($data_siswa->semester == '1') ? 'Ganjil' : 'Genap';
-                $pdf->SetFont('Arial', 'B', 11);
+                $pdf->SetFont($font, 'B', 11);
                 $pdf->Cell(45, 8, '   Semester', 'LB', 0, 'L', true);
-                $pdf->SetFont('Arial', '', 11);
+                $pdf->SetFont($font, '', 11);
                 $pdf->Cell(145, 8, ': ' . $semester, 'RB', 1, 'L', true);
                 
                 // Reset colors back to normal for content
@@ -78,8 +99,8 @@ $agama=[
 
                     $pdf->Ln(8);
                     // --- ELEGANT SECTION HEADER ---
-                    $pdf->SetFont('Arial', 'B', 14);
-                    $pdf->SetTextColor(41, 128, 185); // Blue Title
+                    $pdf->SetFont($font, 'B', 14);
+                    $pdf->SetTextColor($bg_r, $bg_g, $bg_b); // Blue Title
                     $pdf->SetDrawColor(189, 195, 199); // Light Gray Border
                     
                     // Simple centered cell with a nice bottom border
@@ -120,7 +141,7 @@ $agama=[
 
                     $pdf->Ln(2);
 
-                    $pdf->SetFont('Arial','',12);
+                    $pdf->SetFont($font,'',12);
 
                     if ($key->foto== null) {
                         $image = APPPATH. './../../user/'. $key->foto_siswa;
@@ -204,20 +225,20 @@ $agama=[
                     }
 
                     if ( $i == 0 && strlen($total_char) > 1900) {
-                        $pdf->AddPage();
+                $pdf->AddPage();
 
                     }
 
                     if ( $i == 1 && strlen($total_char) < 1600) {
-                        $pdf->AddPage();
+                $pdf->AddPage();
                     }
 
                     if ( $i == 1 && strlen($total_char) > 1400 && $pdf->PageNo() == 1) {
-                        $pdf->AddPage();
+                $pdf->AddPage();
                     }
 
                     if ( $i == 1 && strlen($total_char) > 4000) {
-                        $pdf->AddPage();
+                $pdf->AddPage();
                     }
                     $i++;
 
@@ -226,14 +247,14 @@ $agama=[
                if ($data_siswa->foto_profile_pancasila != null) {
 
                     $pdf->Ln(8);
-                    $pdf->SetFont('Arial', 'B', 14);
-                    $pdf->SetTextColor(41, 128, 185); // Blue Title
+                    $pdf->SetFont($font, 'B', 14);
+                    $pdf->SetTextColor($bg_r, $bg_g, $bg_b); // Blue Title
                     $pdf->SetDrawColor(189, 195, 199);
                     $pdf->Cell(190, 10, 'KOKURIKULER', 'B', 1, 'C');
                     $pdf->Ln(4);
                     $pdf->SetTextColor(44, 62, 80);
                     $pdf->SetFillColor(255);
-                    $pdf->SetFont('Arial','', 12);
+                    $pdf->SetFont($font,'', 12);
 
 
                     $image = APPPATH. './../../user/'. $data_siswa->foto_profile_pancasila;
@@ -253,14 +274,14 @@ $agama=[
                 }else{
 
                     $pdf->Ln(8);
-                    $pdf->SetFont('Arial', 'B', 14);
-                    $pdf->SetTextColor(41, 128, 185); // Blue Title
+                    $pdf->SetFont($font, 'B', 14);
+                    $pdf->SetTextColor($bg_r, $bg_g, $bg_b); // Blue Title
                     $pdf->SetDrawColor(189, 195, 199);
                     $pdf->Cell(190, 10, 'KOKURIKULER', 'B', 1, 'C');
                     $pdf->Ln(4);
                     $pdf->SetTextColor(44, 62, 80);
                     $pdf->SetFillColor(255);
-                    $pdf->SetFont('Arial','', 12);
+                    $pdf->SetFont($font,'', 12);
 
                     $column_width = $pdf->GetPageWidth()-15;
                     //Test1

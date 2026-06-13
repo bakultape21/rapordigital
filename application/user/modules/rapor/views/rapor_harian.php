@@ -245,7 +245,27 @@
 				<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
+						<div class="modal-body">
+                <!-- Opsi Tema dan Font -->
+                <div class="row mb-3" style="padding: 0 15px;">
+                    <div class="col-md-6">
+                        <label>Warna Tema Bingkai:</label>
+                        <select id="tema_warna_cetak" class="form-control" onchange="updateCetakLinks()">
+                            <option value="biru">Biru (Default)</option>
+                            <option value="merah">Merah</option>
+                            <option value="kuning">Kuning</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Jenis Font:</label>
+                        <select id="tema_font_cetak" class="form-control" onchange="updateCetakLinks()">
+                            <option value="Arial">Arial (Default)</option>
+                            <option value="Times">Times New Roman</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Courier">Courier</option>
+                        </select>
+                    </div>
+                </div>
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -384,7 +404,27 @@
 				<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<div class="modal-body">
+						<div class="modal-body">
+                <!-- Opsi Tema dan Font -->
+                <div class="row mb-3" style="padding: 0 15px;">
+                    <div class="col-md-6">
+                        <label>Warna Tema Bingkai:</label>
+                        <select id="tema_warna_cetak" class="form-control" onchange="updateCetakLinks()">
+                            <option value="biru">Biru (Default)</option>
+                            <option value="merah">Merah</option>
+                            <option value="kuning">Kuning</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Jenis Font:</label>
+                        <select id="tema_font_cetak" class="form-control" onchange="updateCetakLinks()">
+                            <option value="Arial">Arial (Default)</option>
+                            <option value="Times">Times New Roman</option>
+                            <option value="Helvetica">Helvetica</option>
+                            <option value="Courier">Courier</option>
+                        </select>
+                    </div>
+                </div>
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -445,47 +485,69 @@ function preview_image(id)
 		 }
 		}
 
+				function updateCetakLinks() {
+            var color = $('#tema_warna_cetak').val();
+            var font = $('#tema_font_cetak').val();
+            var query = "?color=" + color + "&font=" + font;
+            
+            $('#cetak_data a').each(function() {
+                var base = $(this).attr('data-base-href');
+                if (base) {
+                    $(this).attr('href', base + query);
+                }
+            });
+        }
+        
+        function setCetakLink(elemId, url) {
+            var elem = document.getElementById(elemId);
+            if (elem) {
+                elem.setAttribute('data-base-href', url);
+            }
+        }
+
 		function  get_modal_cetak_data(id, nama_siswa) {
 			$('#nama_siswa_cetak').empty();
 			$('#nama_siswa_cetak').append(nama_siswa);
 			$('#cetak_data').modal('show');
-			document.getElementById("cetak_sampul").href = "<?= site_url() ?>/rapor/cetak_sampul/"+ id;
-			document.getElementById("cetak_sampul_html").href = "<?= site_url() ?>/rapor/cetak_sampul/"+ id+"/html";
+			setCetakLink("cetak_sampul", "<?= site_url() ?>/rapor/cetak_sampul/"+ id);
+			setCetakLink("cetak_sampul_html", "<?= site_url() ?>/rapor/cetak_sampul/"+ id+"/html");
 
-			document.getElementById("cetak_data_lembaga_html").href = "<?= site_url() ?>/rapor/cetak_lembaga/"+ id+"/html";
-			document.getElementById("cetak_data_lembaga").href = "<?= site_url() ?>/rapor/cetak_lembaga/"+ id;
-			document.getElementById("cetak_data_siswa_html").href = "<?= site_url() ?>/rapor/cetak_data_siswa/"+ id+"/html";
-			document.getElementById("cetak_data_siswa").href = "<?= site_url() ?>/rapor/cetak_data_siswa/"+ id;
-			document.getElementById("cetak_lembar_terakhir_html").href = "<?= site_url() ?>/rapor/cetak_lembar_terakhir/"+ id+"/html";
-			document.getElementById("cetak_lembar_terakhir").href = "<?= site_url() ?>/rapor/cetak_lembar_terakhir/"+ id;
+			setCetakLink("cetak_data_lembaga_html", "<?= site_url() ?>/rapor/cetak_lembaga/"+ id+"/html");
+			setCetakLink("cetak_data_lembaga", "<?= site_url() ?>/rapor/cetak_lembaga/"+ id);
+			setCetakLink("cetak_data_siswa_html", "<?= site_url() ?>/rapor/cetak_data_siswa/"+ id+"/html");
+			setCetakLink("cetak_data_siswa", "<?= site_url() ?>/rapor/cetak_data_siswa/"+ id);
+			setCetakLink("cetak_lembar_terakhir_html", "<?= site_url() ?>/rapor/cetak_lembar_terakhir/"+ id+"/html");
+			setCetakLink("cetak_lembar_terakhir", "<?= site_url() ?>/rapor/cetak_lembar_terakhir/"+ id);
 
-			document.getElementById("cetak_rapor_harian").href = "<?= site_url() ?>/rapor/cetak_rapor_harian/"+ id;
+			setCetakLink("cetak_rapor_harian", "<?= site_url() ?>/rapor/cetak_rapor_harian/"+ id);
 
-			document.getElementById("cetak_rapor_harian_html").href = "<?= site_url() ?>/rapor/cetak_rapor_harian/"+ id+"/0/html";
+			setCetakLink("cetak_rapor_harian_html", "<?= site_url() ?>/rapor/cetak_rapor_harian/"+ id+"/0/html");
 
-			document.getElementById("cetak_rapor_harian_foto").href = "<?= site_url() ?>/rapor/cetak_rapor_harian_foto/" + id;
+			setCetakLink("cetak_rapor_harian_foto", "<?= site_url() ?>/rapor/cetak_rapor_harian_foto/" + id);
 
-			document.getElementById("cetak_rapor_harian_foto_html").href = "<?= site_url() ?>/rapor/cetak_rapor_harian_foto/" + id+"/0/html";
+			setCetakLink("cetak_rapor_harian_foto_html", "<?= site_url() ?>/rapor/cetak_rapor_harian_foto/" + id+"/0/html");
 
-			document.getElementById("cetak_rapor_harian_w").href = "<?= site_url() ?>/rapor/cetak_rapor_harian/"+ id + '/1';
+			setCetakLink("cetak_rapor_harian_w", "<?= site_url() ?>/rapor/cetak_rapor_harian/"+ id + '/1');
 
-			document.getElementById("cetak_rapor_harian_w_html").href = "<?= site_url() ?>/rapor/cetak_rapor_harian/"+ id + '/1/html';
+			setCetakLink("cetak_rapor_harian_w_html", "<?= site_url() ?>/rapor/cetak_rapor_harian/"+ id + '/1/html');
 
-			document.getElementById("cetak_rapor_harian_foto_w").href = "<?= site_url() ?>/rapor/cetak_rapor_harian_foto/" + id + '/1';
+			setCetakLink("cetak_rapor_harian_foto_w", "<?= site_url() ?>/rapor/cetak_rapor_harian_foto/" + id + '/1');
 
-			document.getElementById("cetak_rapor_harian_foto_w_html").href = "<?= site_url() ?>/rapor/cetak_rapor_harian_foto/" + id + '/1/html';
+			setCetakLink("cetak_rapor_harian_foto_w_html", "<?= site_url() ?>/rapor/cetak_rapor_harian_foto/" + id + '/1/html');
 
 			
+		updateCetakLinks();
 		}
+
 		function  get_modal_edit_data(id, nama_siswa) {
 			$('#nama_siswa_edit').empty();
 			$('#nama_siswa_edit').append(nama_siswa);
 			$('#edit_data').modal('show');
 			document.getElementById("edit_ppp").onclick =  function() {get_edit_ppp(id, nama_siswa)};
 			document.getElementById("bt_edit_foto_rapor").onclick =  function() {get_edit_foto_rapor(id, nama_siswa)};
-			document.getElementById("bt_edit_narasi").href = "<?= site_url() ?>/rapor/rapor_narasi/edit_narasi/" + id;
+			setCetakLink("bt_edit_narasi", "<?= site_url() ?>/rapor/rapor_narasi/edit_narasi/" + id);
 
-			// document.getElementById("cetak_data_lembaga").href = "<?= site_url() ?>/rapor/cetak_lembaga/"+ id;
+			// setCetakLink("cetak_data_lembaga", "<?= site_url() ?>/rapor/cetak_lembaga/"+ id);
 			
 			
 		}
