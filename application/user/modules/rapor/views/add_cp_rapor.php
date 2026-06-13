@@ -523,6 +523,69 @@ function preview_image(id)
 			$('#profil_pancasila').modal('show');
 			
 		}
+		function putar_gambar(url, id, nama_siswa) {
+			let targetImg = null;
+			let imgs = document.querySelectorAll('#form-action-rapor img');
+			for (let img of imgs) {
+				if (img.src.includes(url)) {
+					targetImg = img;
+					break;
+				}
+			}
+
+			if (!targetImg) {
+				alert('Gambar tidak ditemukan di layar.');
+				return;
+			}
+
+			let image = new Image();
+			image.crossOrigin = "Anonymous";
+			
+			let currentSrc = targetImg.src;
+			if (currentSrc.startsWith('data:') || currentSrc.startsWith('blob:')) {
+				image.src = currentSrc; 
+			} else {
+				let cleanUrl = currentSrc.split('?')[0]; 
+				image.src = cleanUrl + "?t=" + new Date().getTime();
+			}
+
+			image.onload = function() {
+				let canvas = document.createElement("canvas");
+				let ctx = canvas.getContext("2d");
+
+				canvas.width = image.height;
+				canvas.height = image.width;
+
+				ctx.translate(canvas.width / 2, canvas.height / 2);
+				ctx.rotate(90 * Math.PI / 180);
+				ctx.drawImage(image, -image.width / 2, -image.height / 2);
+
+				let base64Data = canvas.toDataURL("image/jpeg", 1.0);
+				targetImg.src = base64Data;
+
+				$.ajax({
+					url: '<?= site_url() ?>/rapor/putar_gambar',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						url: url,
+						base64_data: base64Data,
+						siswa_kelas_id: id
+					},
+					success: function(response) {
+						if (response.status === 1) {
+							console.log('Gambar di server berhasil ditimpa dengan rotasi baru.');
+						} else {
+							alert('Gagal di server: ' + response.message);
+						}
+					},
+					error: function() {
+						alert('Terjadi error jaringan saat menyimpan rotasi.');
+					}
+				});
+			};
+		}
+
 		function get_edit_foto_rapor(id, nama_siswa) {
 
 			$('#nama_siswa_edit_foto_rapor').empty();
@@ -540,13 +603,14 @@ function preview_image(id)
 						for (var i = respon.length - 1; i >= 0; i--) {
 							
 						
-						data_foto += '<label>'+respon[i].elemen_data+'</label>'+
+						data_foto += '<center><label><h4>'+respon[i].elemen_data+'</h4></label></center>'+
 									'<div class="w-100" id="image_preview'+respon[i].elemen_data_id+'">'+
 										'<img class="w-100" id="img-remove" src="<?= base_url() ?>/'+respon[i].foto+'">'+
 									'</div>'+
-									'<div>'+
+									'<div style="padding-top:20px; padding-bottom:20px;">'+
 										'<input type="file" id="files_multi'+respon[i].elemen_data_id+'" onchange="preview_image('+respon[i].elemen_data_id+');"  name="'+respon[i].elemen_data_id+'">'+
 										'<input type="hidden" name="b'+respon[i].elemen_data_id+'" value="'+respon[i].foto+'">'+
+										'<button type="button" class="btn btn-warning" onclick="putar_gambar('+"'"+respon[i].foto+"',"+id+ ",'"+nama_siswa+"'"+')">Putar Gambar</button>'+
 									'</div>';
 						}
 						$('#data_foto').empty();
