@@ -266,8 +266,8 @@
                     <div class="col-md-4">
                         <label>Frame Border:</label>
                         <select id="tema_border_cetak" class="form-control" onchange="updateCetakLinks()">
-                            <option value="0">Tampilkan (Default)</option>
-                            <option value="1">Sembunyikan</option>
+                            <option value="1" selected>Sembunyikan (Default)</option>
+                            <option value="0">Tampilkan</option>
                         </select>
                     </div>
                 </div>
@@ -430,8 +430,8 @@
                     <div class="col-md-4">
                         <label>Frame Border:</label>
                         <select id="tema_border_cetak" class="form-control" onchange="updateCetakLinks()">
-                            <option value="0">Tampilkan (Default)</option>
-                            <option value="1">Sembunyikan</option>
+                            <option value="1" selected>Sembunyikan (Default)</option>
+                            <option value="0">Tampilkan</option>
                         </select>
                     </div>
                 </div>

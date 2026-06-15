@@ -40,7 +40,7 @@ class Pdfb extends FPDF {
     protected $border_r = 41;
     protected $border_g = 128;
     protected $border_b = 185;
-    protected $hide_border = false;
+    protected $hide_border = true;
 
     public function setHideBorder($hide) {
         $this->hide_border = $hide;
