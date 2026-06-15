@@ -15,6 +15,9 @@ $agama=[
 
                 $this->load->library('PDFb');
                 $pdf = new Pdfb('P','mm','A4');
+                if (isset($hide_border) && $hide_border == '1') {
+                    $pdf->setHideBorder(true);
+                }
                 $pdf->AddPage();
                 // $pdf->AddPage();
 

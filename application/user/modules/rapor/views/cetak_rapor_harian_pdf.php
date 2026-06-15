@@ -15,6 +15,9 @@ $agama=[
 
                 $this->load->library('Pdf');
                 $pdf = new Pdf('P','mm','A4');
+                if (isset($hide_border) && $hide_border == '1') {
+                    $pdf->setHideBorder(true);
+                }
                 
                 // --- SETUP DYNAMIC THEME ---
                 if (!empty($theme_color)) {

@@ -248,7 +248,7 @@
 						<div class="modal-body">
                 <!-- Opsi Tema dan Font -->
                 <div class="row mb-3" style="padding: 0 15px;">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label>Warna Tema Bingkai:</label>
                         <select id="tema_warna_cetak" class="form-control" onchange="updateCetakLinks()">
                             <option value="biru">Biru (Default)</option>
@@ -256,13 +256,20 @@
                             <option value="kuning">Kuning</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label>Jenis Font:</label>
                         <select id="tema_font_cetak" class="form-control" onchange="updateCetakLinks()">
                             <option value="Arial">Arial (Default)</option>
                             <option value="Times">Times New Roman</option>
                             <option value="Helvetica">Helvetica</option>
                             <option value="Courier">Courier</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Frame Border:</label>
+                        <select id="tema_border_cetak" class="form-control" onchange="updateCetakLinks()">
+                            <option value="0">Tampilkan (Default)</option>
+                            <option value="1">Sembunyikan</option>
                         </select>
                     </div>
                 </div>
@@ -407,7 +414,7 @@
 						<div class="modal-body">
                 <!-- Opsi Tema dan Font -->
                 <div class="row mb-3" style="padding: 0 15px;">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label>Warna Tema Bingkai:</label>
                         <select id="tema_warna_cetak" class="form-control" onchange="updateCetakLinks()">
                             <option value="biru">Biru (Default)</option>
@@ -415,13 +422,20 @@
                             <option value="kuning">Kuning</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label>Jenis Font:</label>
                         <select id="tema_font_cetak" class="form-control" onchange="updateCetakLinks()">
                             <option value="Arial">Arial (Default)</option>
                             <option value="Times">Times New Roman</option>
                             <option value="Helvetica">Helvetica</option>
                             <option value="Courier">Courier</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Frame Border:</label>
+                        <select id="tema_border_cetak" class="form-control" onchange="updateCetakLinks()">
+                            <option value="0">Tampilkan (Default)</option>
+                            <option value="1">Sembunyikan</option>
                         </select>
                     </div>
                 </div>
@@ -488,7 +502,8 @@ function preview_image(id)
 				function updateCetakLinks() {
             var color = $('#tema_warna_cetak').val();
             var font = $('#tema_font_cetak').val();
-            var query = "?color=" + color + "&font=" + font;
+            var border = $('#tema_border_cetak').val();
+            var query = "?color=" + color + "&font=" + font + "&hide_border=" + border;
             
             $('#cetak_data a').each(function() {
                 var base = $(this).attr('data-base-href');

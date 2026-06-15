@@ -351,6 +351,7 @@ class Rapor extends MX_Controller
 	}
 	public function cetak_data_siswa($id='', $type='')
 	{
+		$data['hide_border'] = $this->input->get('hide_border');
 
 		$data['data_siswa']= @$this->m_global->get([
         		'table'=> 't_kelas_belajar_data td', 
@@ -378,6 +379,7 @@ class Rapor extends MX_Controller
 	}
 	public function cetak_lembar_terakhir($id='', $html='')
 	{
+		$data['hide_border'] = $this->input->get('hide_border');
 
 		$data['data_siswa']= @$this->m_global->get([
         		'table'=> 't_kelas_belajar_data td', 
@@ -447,6 +449,7 @@ class Rapor extends MX_Controller
 		$data['watermark']= $watermark;
 		$data['theme_color'] = $this->input->get('color');
 		$data['theme_font'] = $this->input->get('font');
+		$data['hide_border'] = $this->input->get('hide_border');
 
 		$data['data_siswa']= $this->m_global->get([
         		'table'=> 't_kelas_belajar_data td', 
@@ -507,6 +510,7 @@ group by cp_id, kegiatan_nilai
 		$data['watermark']= $watermark;
 		$data['theme_color'] = $this->input->get('color');
 		$data['theme_font'] = $this->input->get('font');
+		$data['hide_border'] = $this->input->get('hide_border');
 		$data['data_siswa']= $this->m_global->get([
         		'table'=> 't_kelas_belajar_data td', 
         		'select'=> '*, s.alamat as alamat_sekolah',
@@ -563,6 +567,7 @@ group by cp_id, kegiatan_nilai
 		$data['watermark']= $watermark;
 		$data['theme_color'] = $this->input->get('color');
 		$data['theme_font'] = $this->input->get('font');
+		$data['hide_border'] = $this->input->get('hide_border');
 		$data['data_siswa']= $this->m_global->get([
         		'table'=> 't_kelas_belajar_data td', 
         		'select'=> '*, s.alamat as alamat_sekolah',
@@ -649,6 +654,7 @@ group by cp_id, kegiatan_nilai
 		$data['watermark']= $watermark;
 		$data['theme_color'] = $this->input->get('color');
 		$data['theme_font'] = $this->input->get('font');
+		$data['hide_border'] = $this->input->get('hide_border');
 		$data['data_siswa']= $this->m_global->get([
         		'table'=> 't_kelas_belajar_data td', 
         		'select'=> '*, s.alamat as alamat_sekolah',
@@ -881,7 +887,8 @@ group by cp_id, kegiatan_nilai
 
 	}
 		public function cetak_lembaga($id, $html=null)
-        {
+	{
+		$data['hide_border'] = $this->input->get('hide_border');
         
         	$data_siswa= $this->m_global->get([
         		'table'=> 't_kelas_belajar_data td', 
@@ -1064,7 +1071,8 @@ group by cp_id, kegiatan_nilai
         }
 
 	public function cetak_sampul($id, $html=null)
-        {
+	{
+		$data['hide_border'] = $this->input->get('hide_border');
         
         	$data_siswa= $this->m_global->get([
         		'table'=> 't_kelas_belajar_data td', 
@@ -1314,7 +1322,7 @@ group by cp_id, kegiatan_nilai
 				'kepala_sekolah_nip'=> $post['kepala_sekolah_nip'],
 				'tanggal_raport_cetak'=> $post['tanggal_raport_cetak'],
 				'tanggal_raport_pembagian'=> $post['tanggal_raport_pembagian'],
-				'tanggal_raport_pengembalian'=> $post['tanggal_raport_pembagian'],
+				'tanggal_raport_pengembalian'=> $post['tanggal_raport_pengembalian'],
 				'kalimat_depan_rapor'=> $post['kalimat_depan_rapor'],
 				'kalimat_setelah_nama_rapor'=> $post['kalimat_setelah_nama_rapor'],
 				'kalimat_depan_rapor_tidak_muncul' => $post['kalimat_depan_rapor_tidak_muncul'],

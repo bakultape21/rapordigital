@@ -40,6 +40,11 @@ class Pdfb extends FPDF {
     protected $border_r = 41;
     protected $border_g = 128;
     protected $border_b = 185;
+    protected $hide_border = false;
+
+    public function setHideBorder($hide) {
+        $this->hide_border = $hide;
+    }
 
     public function setBorderColor($r, $g, $b) {
         $this->border_r = $r;
@@ -58,11 +63,13 @@ class Pdfb extends FPDF {
     function Header()
     {
         // --- DRAW PREMIUM PAGE BORDER ---
-        $this->SetDrawColor($this->border_r, $this->border_g, $this->border_b); // Dynamic modern border color
-        $this->SetLineWidth(1.0); // 1mm thickness
-        $this->Rect(5, 5, 200, 287, 'D'); // A4 size is 210x297, margin 5mm all around
-        $this->SetLineWidth(0.2); // Reset line width to default
-        $this->SetDrawColor(0, 0, 0); // Reset drawing color
+        if (!$this->hide_border) {
+            $this->SetDrawColor($this->border_r, $this->border_g, $this->border_b); // Dynamic modern border color
+            $this->SetLineWidth(1.0); // 1mm thickness
+            $this->Rect(5, 5, 200, 287, 'D'); // A4 size is 210x297, margin 5mm all around
+            $this->SetLineWidth(0.2); // Reset line width to default
+            $this->SetDrawColor(0, 0, 0); // Reset drawing color
+        }
         
         //Put the watermark
         // echo $this->img_head;
